@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(48, 44, 44, 0.405);
+}
+
+html::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* body{
+  font-family: 'Poppins', sans-serif;
+} */
+
+#navbar{
+  height: 80px;
+  width: 100%;
+  border: solid black 1px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo{
+  height: 80px;
+  width: 40%;
+  border: solid black 1px;
+}
+
+.sections{
+  height: 80px;
+  width: 40%;
+  border: solid black 1px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+li{
+  font-weight: 600;
+  text-decoration: none;
+  list-style: none;
+}
+
+a{
+  /* font-weight: bold; */
+  text-decoration: none;
+  color: black;
+} 
+
+#cont_event{
+  height: 80vh;
+  width: 100%;
+  border: solid black 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evnts{
+  width: 100%;
+  border: solid black 1px;
+  display: flex;
+  justify-content: space-around;
+}
+
+p{
+  font-weight: 600;
+  position: relative;
+  left: 50px;
+  top: 180px;
+  max-width: 80px;
+}
+
+.rdmre{
+  position: relative;
+  left: 50px;
+  top: 170px;
+}
+
+#cont_event .evnts div{
+  height: 300px;
+  width: 197px;
+  border: solid black 1px;
+}
+
+#authcont{
+  height: 500px;
+  width: 500px;
+  border: solid black 1px;
+  position: relative;
+  left: 30%;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button{
+  height: 50px;
+  width: 150px;
+  border-radius: 20px;
+}
+
+@media only screen and (max-width: 920px){
+
+  #cont_event{
+      height: 200vh;
+  }
+  
+  #cont_event .evnts{
+      height: 100vh;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+}
+
+@media only screen and (max-width: 700px){
+  h1{
+      font-size: larger;
+  }
+
+  #cont_event{
+      height: 200vh;
+  }
+
+  #cont_event .evnts{
+      height: 150vh;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+}
