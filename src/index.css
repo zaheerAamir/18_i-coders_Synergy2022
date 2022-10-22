@@ -211,6 +211,7 @@ img{
 .title-container{
   border: solid black 1px;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
@@ -221,6 +222,7 @@ img{
 .contct-container{
   border: solid black 1px;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 /*Organizers page Event Componenet*/
