@@ -2,11 +2,14 @@ import React,{ Component } from 'react'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
+
+/* PAGES:  */
 import Home from './Home'
-import User from './user'
+/* import User from './user' */
 import Admin from './Admin'
 import Organizer from './Organizer'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Auth from './Auth'
+import { BrowserRouter,  Route, Routes } from 'react-router-dom'
 
 
 
@@ -28,12 +31,13 @@ class App extends Component{
       return(
         <>
             <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/User' element={<User/>}/>
-                    <Route path='/admin' element={<Admin/>}/>
-                    <Route path='/Organizer' element={<Organizer/>}/>
-                </Routes>
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                {/* <Route path='/User' element={<User/>}/> */}
+                <Route path='/admin' element={<Admin/>}/>
+                <Route path='/Organizer' element={<Organizer/>}/>
+                <Route path='/Auth' element={<Auth/>}/>
+            </Routes>
             </BrowserRouter>
         </>
       )
