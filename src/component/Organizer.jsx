@@ -66,7 +66,7 @@ function Organizer(){
             evnt_contact: inputcontact,
             evnt_image: inputimage
         })
-        e.reset()
+        
     }
     const hi = 'brooo'
     console.log(`${hi}`)
