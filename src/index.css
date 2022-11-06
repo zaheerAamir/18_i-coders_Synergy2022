@@ -335,22 +335,20 @@ a{
 #cont_event{
   height: fit-content;
   width: 100%;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: aqua;
 }
 
 .evnts{
   height: fit-content;
   width: 100%;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  background-color: blanchedalmond;
 }
 
 .name{
@@ -370,19 +368,19 @@ a{
 .card{
   height: 500px;
   width: 800px;
-  border: solid black 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-bottom: var(--margin-base);
+  border-radius: 15px;
+  background-color: rgb(231, 231, 231);
   /* background-color: rgba(var(--red), var(--green), var(--blue), var(--alpha)); */
 }
 
 .img-container{
   height: 300px;
   width: 50%;
-  border: solid black 1px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -399,25 +397,22 @@ a{
 #container{
   height: 400px;
   width: 400px;
-  border: solid black 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .title-container{
-  border: solid black 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.info-container{
+/* .info-container{
   border: solid black 1px;
-}
+} */
 
 .contct-container{
-  border: solid black 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
