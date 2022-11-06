@@ -12,7 +12,7 @@ Once a user is signed in he/she will be able to see a form where he can create a
 
 and when he clickes the refresh button below he/she will be able to see its event history.
 
-<img src="./src/component/images/Screenshot (18)cropped.png" alt="new image" height="400" width="600"/>
+<img src="./src/component/images/Screenshot (18)cropped.png" alt="new image" height="400" width="800"/>
 
 A organizer can read,update and delete a event that he/she has created.
 But a User can only read event and register for an event by clicking on register button this functionality is comming soon!!
