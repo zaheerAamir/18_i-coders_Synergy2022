@@ -5,10 +5,8 @@ import 'firebase/compat/auth'
 
 /* PAGES:  */
 import Home from './Home'
-/* import User from './user' */
-import Admin from './Admin'
 import Organizer from './Organizer'
-import Auth from './Auth'
+import All from './All'
 import { BrowserRouter,  Route, Routes } from 'react-router-dom'
 
 
@@ -33,10 +31,7 @@ class App extends Component{
             <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                {/* <Route path='/User' element={<User/>}/> */}
-                <Route path='/admin' element={<Admin/>}/>
                 <Route path='/Organizer' element={<Organizer/>}/>
-                <Route path='/Auth' element={<Auth/>}/>
             </Routes>
             </BrowserRouter>
         </>

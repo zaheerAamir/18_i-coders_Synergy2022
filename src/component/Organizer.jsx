@@ -5,79 +5,88 @@ import {useNavigate} from 'react-router-dom'
 /* For Authentication:  */
 import { auth } from './App'
 /* For Database :  */
-import { firestore, serverTimestamp } from './App'
+import { firestore } from './App'
 /* Hook for Authentication:  */
 import {useAuthState} from 'react-firebase-hooks/auth'
 /* Hook for Database:  */
 import {useCollectionData, useCollection} from 'react-firebase-hooks/firestore'
 import { useState } from "react"
 import Card from './card'
-import { doc } from "firebase/firestore"
-import { useEffect } from "react"
+import All from "./All"
+
 
 function Organizer(){
-
+    const [user] = useAuthState(auth)
+    if(user){
+        console.log(user.uid)
+    }
+    /* console.log(user.uid) */
     const navigate = useNavigate()
     function Hope(){
         navigate('/')
     }
-
+    
     function Signout(){
         return auth.currentUser && (
             auth.signOut()
         )
     }
-    const eventsref = firestore.collection('events')
-    const query = eventsref.orderBy('createdAt', 'desc')
-    const events = useCollectionData(query)
-    /* const data = [events[0] , events[3].docs.map(du => ({id: du.id}))] */
-    /* console.log(events[0])
-    console.log(events[3].docs.map(du => ({id: du.id}))) */
-    const [bu, setbu] = useState([])
     
-    const du = useCollection(query)
-    function fire(e){
-        e.preventDefault()
-        setbu(du[0].docs.map(doc => ({...doc.data(), id: doc.id})))
-        console.log(bu)
-    }
-
-   /*  useEffect(() => {
-        setbu(du[0].docs.map(doc => ({...doc.data(), id: doc.id})))
-        console.log(bu)
-    },[] )*/
-
-    
-
-    const [user] = useAuthState(auth)
     const [inputname, setinputname] = useState('')
     const [inputinfo, setinputinfo] = useState('')
     const [inputcontact, setinputcontact] = useState('')
     const [inputimage, setinputimage] = useState('')
 
+    const eventsref = firestore.collection('events')
     
-
-    const send = async(e) => {
+    const [arr, setarr] = useState([])
+    const { serverTimestamp } = firebase.firestore.FieldValue
+    const Send = async(e) => {
         e.preventDefault()
         await eventsref.add({
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            uid: user.uid,
+            createdAt: serverTimestamp(),
             evnt_info: inputinfo,
             evnt_name: inputname,
             evnt_contact: inputcontact,
             evnt_image: inputimage
         })
-        
     }
+
+    let query
+    if(user){
+        query = eventsref.where('uid', '==', user.uid)
+    }
+    
+    const [value, error, loading] = useCollection(query)
+     
+   
+
+        
+    const Fire = () => {
+        error && console.log(error)
+        loading && console.log(loading)
+        setarr(value.docs.map(doc => ({...doc.data(), id: doc.id})))
+    }        
+        
+        console.log(arr)
+  
+    
+    
+    
     const hi = 'brooo'
     console.log(`${hi}`)
     
     
     return(
         <>
-            <div className="organizer">event organiser page
+            <section className="organizer">Event organiser page
                 {!user ? Hope() : <button onClick={Signout}>Signout</button>}
+                {user ? <p>Heloo {user.displayName} 😊</p> : <p>.....</p>}
+                {user ? <img src={user.photoURL} alt="User image" className="user-photo"/> : <p>no image</p>}
                 
-                <form className="Form" onSubmit={send}>
+                
+                <form className="Form" onSubmit={Send}>
                     <div>
                         <p className="evnt">Event name: </p>
                         <input
@@ -86,16 +95,20 @@ function Organizer(){
                             className="input_name"
                             value={inputname}
                             onChange={(e) => setinputname(e.target.value)}
+                            maxLength='25'
                         />
                     </div>
                     <div>
                         <p className="evnt">Event info: </p>
-                        <input
-                            type='text'
-                            placeholder='Event info'
+                        <textarea
+                            placeholder="Event info"
                             className="input_info"
+                            name="text"
                             value={inputinfo}
                             onChange={(e) => setinputinfo(e.target.value)}
+                            rows="4"
+                            cols="50"
+                            maxLength='250'
                         />
                     </div>
                     <div>
@@ -106,27 +119,30 @@ function Organizer(){
                             className="input_contact"
                             value={inputcontact}
                             onChange={(e) => setinputcontact(e.target.value)}
+                            maxLength='25'
                         />
                     </div>
                     <div>
-                        <p className="evnt">Event image: </p>
-                        <input
-                            type='img'
-                            placeholder='Event Image'
+                        <p className="evnt">Event Image: </p>
+                        <textarea
+                            name="text"
+                            placeholder="Event Image Url"
                             className="input_image"
                             value={inputimage}
                             onChange={(e) => setinputimage(e.target.value)}
+                            rows="4"
+                            cols="50"
                         />
                     </div>
-                    <button className="submt">Submit</button>
+                    <button className="submt">Submit</button> 
                 </form>
 
 
 
                 <footer id="cont_event">
-                    <p>Events created by you</p>
+                    <p>Events history: </p>
                     <section className="evnts">
-                        {bu && bu.map(evnt => 
+                        {arr && arr.map(evnt => 
                         <Card
                             name={evnt.evnt_name}
                             info={evnt.evnt_info}
@@ -134,10 +150,10 @@ function Organizer(){
                             id={evnt.id}
                             img={evnt.evnt_image}
                         />)}
-                        <button onClick={fire}>Refresh</button>
+                        <button onClick={Fire}>Refresh</button>
                     </section>
                 </footer>
-            </div>
+            </section>
         </>
     )
 }
