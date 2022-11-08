@@ -6,7 +6,6 @@ import 'firebase/compat/auth'
 /* PAGES:  */
 import Home from './Home'
 import Organizer from './Organizer'
-import All from './All'
 import { BrowserRouter,  Route, Routes } from 'react-router-dom'
 
 

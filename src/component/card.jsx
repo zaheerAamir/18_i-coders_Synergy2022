@@ -1,20 +1,18 @@
 import React from "react"
-import firebase from 'firebase/compat/app'
-import {auth, firestore} from './App'
+import { firestore} from './App'
 import { useState } from "react"
-import { doc, updateDoc, deleteDoc, setDoc } from "firebase/firestore"
-import {useAuthState} from 'react-firebase-hooks/auth'
+import { doc, updateDoc, deleteDoc } from "firebase/firestore"
+
 
 
 function Card(props){
-    const [user] = useAuthState(auth)
-    const [evnts, setevnts] = useState([])
+    
     
     const [name, setname] = useState(props.name)
     const [info, setinfo] = useState(props.info)
     const [contct, setcontct] = useState(props.contct)
 
-    const eventsref = firestore.collection('events')
+    /* const eventsref = firestore.collection('events') */
 
     const editname = async(e) => {
         e.preventDefault()

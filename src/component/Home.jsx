@@ -3,9 +3,7 @@ import firebase from 'firebase/compat/app'
 import { auth } from './App'
 import { firestore } from './App'
 import {useAuthState} from 'react-firebase-hooks/auth'
-import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useNavigate} from 'react-router-dom'
-import { collection } from 'firebase/firestore'
 import { useState } from 'react'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import All from './All'
@@ -16,10 +14,6 @@ import globelogo from './images/icons8-geography-96.png'
 
 function Home(){
     const navigate = useNavigate()
-    function Hope(){
-        navigate('/')
-    }
-    {/* {user ? nope() : <button onClick={signin}>Sign in as User</button>} */}
 
     function org(){
         navigate('/Organizer')
@@ -83,7 +77,7 @@ function Home(){
 
 
                 <section className="sections">
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#abt">Contact</a></li>
                     <li><a href="#abt">About Me</a></li>
                     {user ? org() : <button onClick={signin} className='sign_in'>Sign in as Event organizer </button>}
                 </section>

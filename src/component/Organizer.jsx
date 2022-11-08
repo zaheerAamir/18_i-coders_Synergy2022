@@ -9,10 +9,9 @@ import { firestore } from './App'
 /* Hook for Authentication:  */
 import {useAuthState} from 'react-firebase-hooks/auth'
 /* Hook for Database:  */
-import {useCollectionData, useCollection} from 'react-firebase-hooks/firestore'
+import { useCollection } from 'react-firebase-hooks/firestore'
 import { useState } from "react"
 import Card from './card'
-import All from "./All"
 
 
 function Organizer(){
@@ -83,7 +82,7 @@ function Organizer(){
             <section className="organizer">Event organiser page
                 {!user ? Hope() : <button onClick={Signout}>Signout</button>}
                 {user ? <p>Heloo {user.displayName} 😊</p> : <p>.....</p>}
-                {user ? <img src={user.photoURL} alt="User image" className="user-photo"/> : <p>no image</p>}
+                {user ? <img src={user.photoURL} alt="User" className="user-photo"/> : <p>no image</p>}
                 
                 
                 <form className="Form" onSubmit={Send}>
