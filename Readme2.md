@@ -17,4 +17,4 @@ and when he clickes the refresh button below he/she will be able to see its even
 A organizer can read,update and delete a event that he/she has created.
 But a User can only read event and register for an event by clicking on register button this functionality is comming soon!
 
-Right now it has some dummy data in it but any organizer can add real world data in this app !!
+Right now it has some dummy data in it but any organizer can add real world data in this app !!🧑‍💼
