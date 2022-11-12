@@ -149,7 +149,8 @@ function Organizer(){
                             id={evnt.id}
                             img={evnt.evnt_image}
                         />)}
-                        <button onClick={Fire}>Refresh</button>
+                        {error && <p>Loading....</p>}
+                        {!error && <button onClick={Fire}>Refresh</button>}
                     </section>
                 </footer>
             </section>

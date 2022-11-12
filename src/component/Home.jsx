@@ -100,7 +100,9 @@ function Home(){
                     image={evnt.evnt_image}
                 />)}
             </section>
-            <button onClick={fire} className='refrsh'>Refresh</button>
+            {error && <p>Loading ...</p>}
+            {loading && <p>Sorry couldn't fetch the data😓😓</p>}
+            {!error && <button onClick={fire} className='refrsh'>Refresh</button>}
 
 
             <section id='abt'>
