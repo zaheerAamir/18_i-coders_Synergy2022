@@ -11,6 +11,7 @@ import logo from './images/mr.whiskerson.JPEG'
 import mailogo from './images/icons8-envelope-96.png'
 import linkdnlogo from './images/icons8-linkedin-96.png'
 import globelogo from './images/icons8-geography-96.png'
+import { useEffect } from 'react'
 
 function Home(){
     const navigate = useNavigate()
@@ -36,15 +37,14 @@ function Home(){
     if(user == null){
         query = eventsref.orderBy('createdAt', 'desc')
     }
-    
 
+    const [value, loading, error] = useCollection(query)
 
-    const [value, error, loading] = useCollection(query)
-    function fire(e){
-        error && console.log(error)
-        loading && console.log(loading)
-        setarr(value.docs.map(doc => ({...doc.data()})))
-    }
+    useEffect(() => {
+        if(value !== undefined){
+            setarr(value.docs.map(doc => ({...doc.data()})))
+        }
+    },[value])
 
     const [open1, setopen1] = useState(false)
     const [open2, setopen2] = useState(false)
@@ -100,9 +100,9 @@ function Home(){
                     image={evnt.evnt_image}
                 />)}
             </section>
-            {error && <p>Loading ...</p>}
-            {loading && <p>Sorry couldn't fetch the data😓😓</p>}
-            {!error && <button onClick={fire} className='refrsh'>Refresh</button>}
+            {loading && <p>Loading ...</p>}
+            {error && <p>Sorry couldn't fetch the data😓😓</p>}
+            {/* {!error && <button onClick={fire} className='refrsh'>Refresh</button>} */}
 
 
             <section id='abt'>

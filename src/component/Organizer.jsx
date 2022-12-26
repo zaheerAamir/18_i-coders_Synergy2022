@@ -24,7 +24,6 @@ function Organizer(){
     function Hope(){
         navigate('/')
     }
-    
     function Signout(){
         return auth.currentUser && (
             auth.signOut()
@@ -57,7 +56,7 @@ function Organizer(){
         query = eventsref.where('uid', '==', user.uid)
     }
     
-    const [value, error, loading] = useCollection(query)
+    const [value, loading, error] = useCollection(query)
      
    
 
@@ -149,7 +148,7 @@ function Organizer(){
                             id={evnt.id}
                             img={evnt.evnt_image}
                         />)}
-                        {error && <p>Loading....</p>}
+                        {loading && <p>Loading....</p>}
                         {!error && <button onClick={Fire}>Refresh</button>}
                     </section>
                 </footer>
